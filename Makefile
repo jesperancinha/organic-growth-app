@@ -1,3 +1,7 @@
+b:
+	./gradlew build
+wrapper:
+	gradle wrapper
 install-spring-boot-cli:
 	brew tap spring-cli-projects/spring-cli
 	brew install spring-cli
