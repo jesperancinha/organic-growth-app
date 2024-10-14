@@ -30,3 +30,9 @@ replay_pid*
 # Gradle
 .gradle
 build
+
+# KotlinDL
+mnist_model
+mnist_model_configuration
+mnist_*
+cache

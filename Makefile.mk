@@ -1,7 +1,8 @@
 SHELL := /bin/sh
-GRADLE_VERSION ?= 8.10
+GRADLE_VERSION ?= 8.10.2
 
 b:
+	gradle build
 
 install:
 	sdk install kotlin

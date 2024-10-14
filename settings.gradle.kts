@@ -4,3 +4,4 @@ plugins {
 
 rootProject.name = "organic-growth-app"
 include("oga-simple-service")
+include("oga-kotlindl-runner")
