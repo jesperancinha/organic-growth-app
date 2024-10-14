@@ -1,0 +1,8 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <name>Organic Growth App :: Root</name>
+    <artifactId>organic-growth-app</artifactId>
+    <groupId>org.jesperancinha.oga</groupId>
+    <version>0.0.0</version>
+    <packaging>pom</packaging>
+</project>

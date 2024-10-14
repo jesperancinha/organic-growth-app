@@ -24,3 +24,4 @@ Under Construction...
 4. [Kotlin Notebooks](https://kotlinlang.org/docs/kotlin-notebook-overview.html)
 5. [Langchain4j](https://github.com/langchain4j/langchain4j)
 6. [Spring-AI](https://spring.io/projects/spring-ai)
+7. [LangChain](https://github.com/langchain4j/langchain4j)
