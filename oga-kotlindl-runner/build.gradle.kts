@@ -14,10 +14,6 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.kotlin.deeplearning.api)
-    implementation(libs.kotlin.deeplearning.impl)
-    implementation(libs.kotlin.deeplearning.onnx)
-    implementation(libs.kotlin.deeplearning.dataset)
     implementation(libs.kotlin.deeplearning.tensorflow)
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)

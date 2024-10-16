@@ -3,7 +3,8 @@ GRADLE_VERSION ?= 8.10.2
 
 b:
 	gradle build
-
+test:
+	gradle test
 install:
 	sdk install kotlin
 install-locust:
