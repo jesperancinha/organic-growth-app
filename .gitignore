@@ -36,3 +36,9 @@ mnist_model
 mnist_model_configuration
 mnist_*
 cache
+
+# Kotlin
+.kotlin
+
+# Angular
+.angular
