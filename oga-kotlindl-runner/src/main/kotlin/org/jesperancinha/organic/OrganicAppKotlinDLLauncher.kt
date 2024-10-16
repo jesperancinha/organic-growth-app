@@ -42,19 +42,18 @@ fun main() {
     }
     TensorFlowInferenceModel.load(File("mnist_model")).use {
         it.reshape(28, 28, 1)
-        trainImage("one.png", it)
-        trainImage("three.png", it)
+        it.trainImage("one.png")
+        it.trainImage("three.png")
     }
 
 }
 
-private fun trainImage(
-    imageFile: String,
-    model1: TensorFlowInferenceModel
+private fun TensorFlowInferenceModel.trainImage(
+    imageFile: String
 ) {
     val resourceAsStream = OrganicAppKotlinDLLauncher::class.java.getResourceAsStream("/$imageFile")
     val preprocessedImage =
         ImageConverter.toNormalizedFloatArray(ImageConverter.toBufferedImage(resourceAsStream), ColorMode.GRAYSCALE)
-    val prediction = model1.predict(preprocessedImage)
+    val prediction = predict(preprocessedImage)
     println("Predicted class: ${prediction}")
 }
