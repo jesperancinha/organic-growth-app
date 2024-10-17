@@ -10,6 +10,7 @@ import org.jetbrains.kotlinx.dl.api.core.metric.Metrics
 import org.jetbrains.kotlinx.dl.api.core.optimizer.Adam
 import org.jetbrains.kotlinx.dl.api.inference.TensorFlowInferenceModel
 import org.jetbrains.kotlinx.dl.dataset.embedded.mnist
+import org.jetbrains.kotlinx.dl.dataset.evaluate
 import org.jetbrains.kotlinx.dl.impl.preprocessing.image.ColorMode
 import org.jetbrains.kotlinx.dl.impl.preprocessing.image.ImageConverter
 import java.io.File
@@ -34,16 +35,27 @@ fun main() {
             metric = Metrics.ACCURACY
         )
         it.fit(dataset = train, epochs = 10, batchSize = 32)
-        val accuracy = it.evaluate(dataset = test).metrics[Metrics.ACCURACY]
+
+        val accuracy = it.evaluate(dataset =  test).metrics[Metrics.ACCURACY]
+
         println("Test accuracy: $accuracy")
+
         val modelDirectory = File("mnist_model")
+
         modelDirectory.exists().takeIf { false } ?: modelDirectory.deleteRecursively()
+
         it.save(modelDirectory, SavingFormat.TF_GRAPH_CUSTOM_VARIABLES)
     }
     TensorFlowInferenceModel.load(File("mnist_model")).use {
         it.reshape(28, 28, 1)
         it.trainImage("one.png")
         it.trainImage("three.png")
+        it.trainImage("four.png")
+        val accuracy = it.evaluate(
+            dataset = test,
+            metric = Metrics.ACCURACY
+        )
+        println("Test accuracy: $accuracy")
     }
 
 }
