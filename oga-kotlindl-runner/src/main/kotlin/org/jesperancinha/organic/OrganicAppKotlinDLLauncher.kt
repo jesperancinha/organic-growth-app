@@ -13,7 +13,9 @@ import org.jetbrains.kotlinx.dl.dataset.embedded.mnist
 import org.jetbrains.kotlinx.dl.dataset.evaluate
 import org.jetbrains.kotlinx.dl.impl.preprocessing.image.ColorMode
 import org.jetbrains.kotlinx.dl.impl.preprocessing.image.ImageConverter
+import java.awt.image.BufferedImage
 import java.io.File
+import javax.imageio.ImageIO
 
 
 class OrganicAppKotlinDLLauncher
@@ -41,7 +43,6 @@ fun main() {
         println("Test accuracy: $accuracy")
 
         val modelDirectory = File("mnist_model")
-
         modelDirectory.exists().takeIf { false } ?: modelDirectory.deleteRecursively()
 
         it.save(modelDirectory, SavingFormat.TF_GRAPH_CUSTOM_VARIABLES)
@@ -68,4 +69,21 @@ private fun TensorFlowInferenceModel.trainImage(
         ImageConverter.toNormalizedFloatArray(ImageConverter.toBufferedImage(resourceAsStream), ColorMode.GRAYSCALE)
     val prediction = predict(preprocessedImage)
     println("Predicted class: ${prediction}")
+}
+
+fun FloatArray.saveFloatArrayAsImage(
+    width: Int, height: Int, outputFile: File
+) {
+    require(this.size == width * height) { "Array size must be width * height" }
+
+    val image = BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY)
+
+    for (y in 0 until height) {
+        for (x in 0 until width) {
+            val normalizedValue = (this[y * width + x] * 255).toInt().coerceIn(0, 255)
+            val rgb = (normalizedValue shl 16) or (normalizedValue shl 8) or normalizedValue
+            image.setRGB(x, y, rgb)
+        }
+    }
+    ImageIO.write(image, "png", outputFile)
 }
