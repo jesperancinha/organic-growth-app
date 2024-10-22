@@ -9,6 +9,13 @@ install-spring-boot-cli:
 	brew install spring-cli
 install-home-brew:
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+install-fashion-mnist:
+	curl -O https://github.com/zalandoresearch/fashion-mnist/raw/master/data/fashion/train-images-idx3-ubyte
+	curl -O https://github.com/zalandoresearch/fashion-mnist/raw/master/data/fashion/train-labels-idx1-ubyte
+	curl -O https://github.com/zalandoresearch/fashion-mnist/raw/master/data/fashion/t10k-images-idx3-ubyte
+	curl -O https://github.com/zalandoresearch/fashion-mnist/raw/master/data/fashion/t10k-labels-idx1-ubyte
+	if [ ! -d fashion-mnist ]; then mkdir fashion-mnist; fi;
+	mv *-ubyte fashion-mnist
 create-new-service:
 	spring boot new --from ai --name oga-simple-service
 deps-plugins-update:

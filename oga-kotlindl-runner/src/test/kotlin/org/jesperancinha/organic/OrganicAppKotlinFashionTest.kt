@@ -13,25 +13,28 @@ import org.jetbrains.kotlinx.dl.api.summary.printSummary
 import org.jetbrains.kotlinx.dl.dataset.embedded.fashionMnist
 import org.junit.jupiter.api.Test
 import java.io.File
+import java.nio.file.Files
+
+const val FASHION_FOLDER = "fashion-images"
 
 class OrganicAppKotlinFashionTest {
+
+    val stringLabels = mapOf(
+        0 to "T-shirt/top",
+        1 to "Trousers",
+        2 to "Pullover",
+        3 to "Dress",
+        4 to "Coat",
+        5 to "Sandals",
+        6 to "Shirt",
+        7 to "Sneakers",
+        8 to "Bag",
+        9 to "Ankle boots"
+    )
 
     @Test
     fun `should make preliminary tests to fashion`() {
         val (train, test) = fashionMnist()
-
-        val stringLabels = mapOf(
-            0 to "T-shirt/top",
-            1 to "Trousers",
-            2 to "Pullover",
-            3 to "Dress",
-            4 to "Coat",
-            5 to "Sandals",
-            6 to "Shirt",
-            7 to "Sneakers",
-            8 to "Bag",
-            9 to "Ankle boots"
-        )
 
         val model = Sequential.of(
             Input(28, 28, 1),
@@ -60,21 +63,33 @@ class OrganicAppKotlinFashionTest {
 
             println("Accuracy: $accuracy")
 
-            val modelDirectory = File("fashionMnist")
+            val modelDirectory = File("fashion-mnist")
             modelDirectory.exists().takeIf { false } ?: modelDirectory.deleteRecursively()
 
-            it.save(File("fashionMnist"), writingMode = WritingMode.OVERRIDE)
+            it.save(File("fashion-mnist"), writingMode = WritingMode.OVERRIDE)
         }
 
-        TensorFlowInferenceModel.load(File("fashionMnist")).use {
+        TensorFlowInferenceModel.load(File("fashion-mnist")).use {
             it.reshape(28, 28, 1)
             val image1 = test.getX(0)
-            image1.saveFloatArrayAsImage(28, 28, File("fashion.png"))
             val prediction = it.predict(image1)
             val actualLabel = test.getY(0)
 
             println("Predicted label is: $prediction. This corresponds to class ${stringLabels[prediction]}.")
             println("Actual label is: $actualLabel.")
+        }
+    }
+
+
+    @Test
+    fun `should generate mnist image sets`() {
+        val (train, test) = fashionMnist()
+        File(FASHION_FOLDER).mkdirs()
+        test.x.forEachIndexed { i, image ->
+            val pathname = stringLabels[test.getY(i).toInt()]
+            File("$FASHION_FOLDER/$pathname").mkdirs()
+            image.saveFloatArrayAsImage(28, 28, File("fashion-images/$pathname/fashion$i.png"))
+
         }
     }
 }

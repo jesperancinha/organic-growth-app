@@ -37,6 +37,8 @@ mnist_model_configuration
 mnist_*
 fashionMnist
 fashionMnist*
+fashion-mnist
+fashion-images
 cache
 
 # Kotlin
