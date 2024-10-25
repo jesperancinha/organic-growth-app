@@ -1,53 +1,55 @@
 package org.jesperancinha.organic
 
 import org.jetbrains.kotlinx.dl.api.core.Sequential
-import org.jetbrains.kotlinx.dl.api.core.activation.Activations
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations.Linear
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations.Relu
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Dense
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Input
-import org.jetbrains.kotlinx.dl.api.core.loss.LossFunction
 import org.jetbrains.kotlinx.dl.api.core.loss.Losses
-import org.jetbrains.kotlinx.dl.api.core.loss.Losses.MSE
-import org.jetbrains.kotlinx.dl.api.core.loss.MAE
-import org.jetbrains.kotlinx.dl.api.core.loss.MSE
-import org.jetbrains.kotlinx.dl.api.core.metric.Metric
-import org.jetbrains.kotlinx.dl.api.core.metric.Metrics
 import org.jetbrains.kotlinx.dl.api.core.metric.Metrics.MAE
 import org.jetbrains.kotlinx.dl.api.core.optimizer.Adam
-import org.jetbrains.kotlinx.dl.dataset.Dataset
 import org.jetbrains.kotlinx.dl.dataset.OnHeapDataset
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
 
-class OrganicAppUnderfittingCorrectionTest {
+class OrganicAppOverfittingTest {
 
     @Test
-    fun `should run a model created with corrected underfitting`() {
+    fun `should run an overfitting test`() {
         val (trainData, testData) = generateNormalizedSyntheticData()
-
         val model = Sequential.of(
-            Input(1),
-            Dense(128, activation = Relu),
-            Dense(64, activation = Relu),
-            Dense(32, activation = Relu),
-            Dense(1, activation = Linear)
+            Input(1), // Input layer with 1 feature
+            Dense(512, activation = Relu), // First hidden layer
+            Dense(256, activation = Relu), // Second hidden layer
+            Dense(128, activation = Relu), // Third hidden layer
+            Dense(64, activation = Relu),  // Fourth hidden layer
+            Dense(32, activation = Relu),  // Fifth hidden layer
+            Dense(1, activation = Linear)  // Output layer
         )
-
         model.compile(
-            optimizer = Adam(learningRate = 0.01f),
-            loss = MSE,
+            optimizer = Adam(learningRate = 0.001f),
+            loss = Losses.MAE,
             metric = MAE
         )
+        val epochs = 5000
+        val batchSize = 32
 
-        model.fit(trainData, epochs = 1000, batchSize = 32)
+        val trainingLosses = mutableListOf<Double>()
+        val trainingMAEs = mutableListOf<Double>()
 
+        for (epoch in 1..epochs) {
+            model.fit(trainData, epochs = 1, batchSize = batchSize)
+            val trainEvaluation = model.evaluate(trainData)
+            trainingLosses.add(trainEvaluation.lossValue)
+            trainingMAEs.add(trainEvaluation.metrics[MAE]!!)
+            println("Epoch $epoch: Training Loss: ${trainEvaluation.lossValue}, Training MAE: ${trainEvaluation.metrics[MAE]}")
+        }
         val evaluation = model.evaluate(testData)
         println("Test Loss: ${evaluation.lossValue}, Test MAE: ${evaluation.metrics[MAE]}")
     }
 
     fun generateNormalizedSyntheticData(): Pair<OnHeapDataset, OnHeapDataset> {
-        val random = Random(42)
+        val random = Random(42) // Seed for reproducibility
         val xTrainRaw = (0..100).map { it.toFloat() }.toFloatArray()
         val yTrainRaw = (0..100).map { (2 * it + 1 + random.nextDouble() * 10).toFloat() }.toFloatArray()
         val xTestRaw = (101..200).map { it.toFloat() }.toFloatArray()
