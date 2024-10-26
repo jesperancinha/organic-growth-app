@@ -22,3 +22,4 @@ kotlin-deeplearning-impl = { group = "org.jetbrains.kotlinx", name = "kotlin-dee
 kotlin-deeplearning-onnx = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-onnx", version = "0.5.2" }
 kotlin-deeplearning-dataset = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-dataset", version = "0.5.2" }
 kotlin-deeplearning-tensorflow = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-tensorflow", version = "0.5.2" }
+nd4j-native = { group = "org.nd4j", name = "nd4j-native", version = "1.0.0-beta7" }
