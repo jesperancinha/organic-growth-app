@@ -15,7 +15,6 @@ repositories {
 
 dependencies {
     implementation(libs.kotlin.deeplearning.tensorflow)
-    implementation(libs.nd4j.native)
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)
 }

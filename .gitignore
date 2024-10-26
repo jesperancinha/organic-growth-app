@@ -39,6 +39,7 @@ fashionMnist
 fashionMnist*
 fashion-mnist
 fashion-images
+saved_model
 cache
 
 # Kotlin
