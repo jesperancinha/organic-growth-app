@@ -49,7 +49,7 @@ public class OgaDeepLearning4JRunnerTest {
             DataSet ds = dataIter.next();
             try {
                 ds.getFeatures().reshape(batchSize, height * width * channels);
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

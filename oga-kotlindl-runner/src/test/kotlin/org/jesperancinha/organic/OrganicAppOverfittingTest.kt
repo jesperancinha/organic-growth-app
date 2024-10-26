@@ -18,13 +18,13 @@ class OrganicAppOverfittingTest {
     fun `should run an overfitting test`() {
         val (trainData, testData) = generateNormalizedSyntheticData()
         val model = Sequential.of(
-            Input(1), // Input layer with 1 feature
-            Dense(512, activation = Relu), // First hidden layer
-            Dense(256, activation = Relu), // Second hidden layer
-            Dense(128, activation = Relu), // Third hidden layer
-            Dense(64, activation = Relu),  // Fourth hidden layer
-            Dense(32, activation = Relu),  // Fifth hidden layer
-            Dense(1, activation = Linear)  // Output layer
+            Input(1),
+            Dense(512, activation = Relu),
+            Dense(256, activation = Relu),
+            Dense(128, activation = Relu),
+            Dense(64, activation = Relu),
+            Dense(32, activation = Relu),
+            Dense(1, activation = Linear)
         )
         model.compile(
             optimizer = Adam(learningRate = 0.001f),
