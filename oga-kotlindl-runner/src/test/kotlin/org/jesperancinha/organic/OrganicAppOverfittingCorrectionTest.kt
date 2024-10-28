@@ -2,6 +2,7 @@ package org.jesperancinha.organic
 
 import org.jesperancinha.organic.data.generateSyntheticData
 import org.jetbrains.kotlinx.dl.api.core.Sequential
+import org.jetbrains.kotlinx.dl.api.core.activation.Activations
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations.Linear
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations.Relu
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Dense
@@ -22,11 +23,17 @@ class OrganicAppOverfittingCorrectionTest {
         val (trainData, testData) = generateSyntheticData()
         val model = Sequential.of(
             Input(1),
-            Dense(64, activation = Relu),
-            Dropout(0.5f),
-            Dense(32, activation = Relu),
-            Dropout(0.5f),
-            Dense(1, activation = Linear)
+            Dense(128, activation = Activations.Relu),
+            Dropout(0.3f),
+            Dense(64, activation = Activations.Relu),
+            Dropout(0.3f),
+            Dense(64, activation = Activations.Relu),
+            Dropout(0.3f),
+            Dense(32, activation = Activations.Relu),
+            Dropout(0.3f),
+            Dense(16, activation = Activations.Relu),
+            Dropout(0.3f),
+            Dense(1, activation = Activations.Linear)
         )
 
         model.compile(
