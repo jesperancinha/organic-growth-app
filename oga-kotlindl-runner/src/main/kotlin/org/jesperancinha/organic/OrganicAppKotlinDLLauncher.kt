@@ -49,9 +49,9 @@ fun main() {
     }
     TensorFlowInferenceModel.load(File("mnist_model")).use {
         it.reshape(28, 28, 1)
-        it.trainImage("one.png")
-        it.trainImage("three.png")
-        it.trainImage("four.png")
+        it.predictImage("one.png")
+        it.predictImage("three.png")
+        it.predictImage("four.png")
         val accuracy = it.evaluate(
             dataset = test,
             metric = Metrics.ACCURACY
@@ -61,7 +61,7 @@ fun main() {
 
 }
 
-private fun TensorFlowInferenceModel.trainImage(
+fun TensorFlowInferenceModel.predictImage(
     imageFile: String
 ) {
     val resourceAsStream = OrganicAppKotlinDLLauncher::class.java.getResourceAsStream("/$imageFile")
