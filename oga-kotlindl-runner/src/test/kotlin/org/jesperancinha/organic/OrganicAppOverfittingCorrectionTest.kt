@@ -14,6 +14,7 @@ import org.jetbrains.kotlinx.dl.api.core.metric.Metrics.MAE
 import org.jetbrains.kotlinx.dl.api.core.optimizer.Adam
 import org.jetbrains.kotlinx.dl.dataset.OnHeapDataset
 import org.junit.jupiter.api.Test
+import kotlin.Double.Companion.MAX_VALUE
 import kotlin.random.Random
 
 class OrganicAppOverfittingCorrectionTest {
@@ -23,17 +24,17 @@ class OrganicAppOverfittingCorrectionTest {
         val (trainData, testData) = generateSyntheticData()
         val model = Sequential.of(
             Input(1),
-            Dense(128, activation = Activations.Relu),
+            Dense(128, activation = Relu),
             Dropout(0.3f),
-            Dense(64, activation = Activations.Relu),
+            Dense(64, activation = Relu),
             Dropout(0.3f),
-            Dense(64, activation = Activations.Relu),
+            Dense(64, activation = Relu),
             Dropout(0.3f),
-            Dense(32, activation = Activations.Relu),
+            Dense(32, activation = Relu),
             Dropout(0.3f),
-            Dense(16, activation = Activations.Relu),
+            Dense(16, activation = Relu),
             Dropout(0.3f),
-            Dense(1, activation = Activations.Linear)
+            Dense(1, activation = Linear)
         )
 
         model.compile(
@@ -41,7 +42,7 @@ class OrganicAppOverfittingCorrectionTest {
             loss = Losses.MSE,
             metric = MAE
         )
-        var bestValidationLoss = Double.MAX_VALUE
+        var bestValidationLoss = MAX_VALUE
         var epochsWithoutImprovement = 0
         val patience = 10
         val trainLosses = mutableListOf<Double>()
@@ -56,7 +57,7 @@ class OrganicAppOverfittingCorrectionTest {
             println("Test Loss: ${testEvaluation.lossValue}, Test MAE: ${testEvaluation.metrics[MAE]}")
             if (testEvaluation.lossValue < bestValidationLoss) {
                 bestValidationLoss = testEvaluation.lossValue
-                epochsWithoutImprovement = 0 // Reset counter
+                epochsWithoutImprovement = 0
                 println("Validation loss improved, saving model weights.")
             } else {
                 epochsWithoutImprovement++
