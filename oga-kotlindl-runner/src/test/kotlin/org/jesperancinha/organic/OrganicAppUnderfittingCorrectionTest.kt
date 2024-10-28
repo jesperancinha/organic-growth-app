@@ -1,5 +1,6 @@
 package org.jesperancinha.organic
 
+import org.jesperancinha.organic.data.generateSyntheticData
 import org.jetbrains.kotlinx.dl.api.core.Sequential
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Dense
@@ -17,18 +18,17 @@ class OrganicAppUnderfittingCorrectionTest {
     fun `should run a model created with corrected underfitting`() {
         val (trainData, testData) = generateSyntheticData()
 
-        // Create a simple feedforward neural network
         val model = Sequential.of(
             Input(1),
             Dense(128, activation = Activations.Relu),
             Dense(64, activation = Activations.Relu),
             Dense(32, activation = Activations.Relu),
             Dense(16, activation = Activations.Relu),
-            Dense(1, activation = Activations.Linear)  // Output layer for regression
+            Dense(1, activation = Activations.Linear)
         )
 
         model.compile(
-            optimizer = Adam(learningRate = 0.01f), // Adjusted learning rate
+            optimizer = Adam(learningRate = 0.01f),
             loss = Losses.MSE,
             metric = Metrics.MAE
         )
@@ -47,20 +47,5 @@ class OrganicAppUnderfittingCorrectionTest {
         for (i in predictions.indices) {
             println("True: ${yTest[i]}, Predicted: ${predictions[i][0]}")
         }
-    }
-
-    fun generateSyntheticData(): Pair<OnHeapDataset, OnHeapDataset> {
-        val random = Random(42)
-        val xTrainRaw = (0..100).map { it.toFloat() }.toFloatArray()
-        val yTrainRaw = (0..100).map { (2 * it + 1 + random.nextDouble() * 10).toFloat() }.toFloatArray()
-        val xTestRaw = (101..200).map { it.toFloat() }.toFloatArray()
-        val yTestRaw = (101..200).map { (2 * it + 1 + random.nextDouble() * 10).toFloat() }.toFloatArray()
-        val xTrain = xTrainRaw.map { floatArrayOf(it / 200f) }.toTypedArray()
-        val yTrain = yTrainRaw.map { it / 200f }.toFloatArray()
-        val xTest = xTestRaw.map { floatArrayOf(it / 200f) }.toTypedArray()
-        val yTest = yTestRaw.map { it / 200f }.toFloatArray()
-        val trainData = OnHeapDataset.create(xTrain, yTrain)
-        val testData = OnHeapDataset.create(xTest, yTest)
-        return Pair(trainData, testData)
     }
 }

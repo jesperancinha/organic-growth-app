@@ -1,5 +1,6 @@
 package org.jesperancinha.organic
 
+import org.jesperancinha.organic.data.generateSyntheticData
 import org.jetbrains.kotlinx.dl.api.core.Sequential
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Dense
@@ -32,28 +33,12 @@ class OrganicAppUnderfittingTest {
 
         val xTest = testData.x
         val predictions = xTest.map { model.predictSoftly(it) }
-        println("Predictions vs. True Values:")
-
         val yTest = testData.y
+
+        println("Predictions vs. True Values:")
         predictions.forEach { println(it[0].toString()) }
         for (i in predictions.indices) {
             println("True: ${yTest[i]}, Predicted: ${predictions[i][0]}")
         }
     }
-
-    fun generateSyntheticData(): Pair<OnHeapDataset, OnHeapDataset> {
-        val random = Random(42)
-        val xTrainRaw = (0..100).map { it.toFloat() }.toFloatArray()
-        val yTrainRaw = (0..100).map { (2 * it + 1 + random.nextDouble() * 10).toFloat() }.toFloatArray()
-        val xTestRaw = (101..200).map { it.toFloat() }.toFloatArray()
-        val yTestRaw = (101..200).map { (2 * it + 1 + random.nextDouble() * 10).toFloat() }.toFloatArray()
-        val xTrain = xTrainRaw.map { floatArrayOf(it / 200f) }.toTypedArray()
-        val yTrain = yTrainRaw.map { it / 200f }.toFloatArray()
-        val xTest = xTestRaw.map { floatArrayOf(it / 200f) }.toTypedArray()
-        val yTest = yTestRaw.map { it / 200f }.toFloatArray()
-        val trainData = OnHeapDataset.create(xTrain, yTrain)
-        val testData = OnHeapDataset.create(xTest, yTest)
-        return Pair(trainData, testData)
-    }
-
 }
