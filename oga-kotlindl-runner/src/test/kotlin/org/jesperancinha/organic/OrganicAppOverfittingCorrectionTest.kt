@@ -2,20 +2,16 @@ package org.jesperancinha.organic
 
 import org.jesperancinha.organic.data.generateSyntheticData
 import org.jetbrains.kotlinx.dl.api.core.Sequential
-import org.jetbrains.kotlinx.dl.api.core.activation.Activations
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations.Linear
 import org.jetbrains.kotlinx.dl.api.core.activation.Activations.Relu
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Dense
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Input
 import org.jetbrains.kotlinx.dl.api.core.layer.regularization.Dropout
 import org.jetbrains.kotlinx.dl.api.core.loss.Losses
-import org.jetbrains.kotlinx.dl.api.core.metric.Metric
 import org.jetbrains.kotlinx.dl.api.core.metric.Metrics.MAE
 import org.jetbrains.kotlinx.dl.api.core.optimizer.Adam
-import org.jetbrains.kotlinx.dl.dataset.OnHeapDataset
 import org.junit.jupiter.api.Test
 import kotlin.Double.Companion.MAX_VALUE
-import kotlin.random.Random
 
 class OrganicAppOverfittingCorrectionTest {
 

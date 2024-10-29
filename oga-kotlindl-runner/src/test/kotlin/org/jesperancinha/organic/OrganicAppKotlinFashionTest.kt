@@ -13,7 +13,6 @@ import org.jetbrains.kotlinx.dl.api.summary.printSummary
 import org.jetbrains.kotlinx.dl.dataset.embedded.fashionMnist
 import org.junit.jupiter.api.Test
 import java.io.File
-import java.nio.file.Files
 
 const val FASHION_FOLDER = "fashion-images"
 
