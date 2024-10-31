@@ -24,3 +24,5 @@ kotlin-deeplearning-dataset = { group = "org.jetbrains.kotlinx", name = "kotlin-
 kotlin-deeplearning-tensorflow = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-tensorflow", version = "0.5.2" }
 nd4j-native = { group = "org.nd4j", name = "nd4j-native", version = "1.0.0-M2.1" }
 tensorflow-core-platform = { group = "org.tensorflow", name = "tensorflow-core-platform", version = "0.5.0" }
+langchain4j = { group = "dev.langchain4j", name = "langchain4j", version = "0.35.0" }
+langchain4j-open-ai = { group = "dev.langchain4j", name = "langchain4j-open-ai", version = "0.35.0" }

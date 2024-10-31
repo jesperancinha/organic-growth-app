@@ -26,3 +26,5 @@ Under Construction...
 6. [Spring-AI](https://spring.io/projects/spring-ai)
 7. [An Overview of Bayesian Networks in AI](https://www.turing.com/kb/an-overview-of-bayesian-networks-in-ai)
 8. [LangChain](https://github.com/langchain4j/langchain4j)
+9. [Adagrad Optimizer Explained: How It Works, Implementation, & Comparisons](https://www.datacamp.com/tutorial/adagrad-optimizer-explained)
+10. [Adaptive Subgradient Methods (AdaGrad)](https://deepai.org/machine-learning-glossary-and-terms/adaptive-subgradient-methods)
