@@ -69,7 +69,6 @@ class OrganicAppOverfittingCorrectionTest {
         val yTest = testData.y
 
         println("Predictions vs. True Values:")
-        predictions.forEach { println(it[0].toString()) }
         for (i in predictions.indices) {
             println("True: ${yTest[i]}, Predicted: ${predictions[i][0]}")
         }

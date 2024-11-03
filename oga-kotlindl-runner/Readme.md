@@ -6,6 +6,7 @@
 -   [Gentle Introduction to the Adam Optimization Algorithm for Deep Learning](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/)
 -   [Fashion mnist](https://github.com/Kotlin/kotlindl/blob/master/docs/create_your_first_nn.md)
 -   [What is the "dying ReLU" problem in neural networks?](https://datascience.stackexchange.com/questions/5706/what-is-the-dying-relu-problem-in-neural-networks)
+-   [Adaptive Learning Rate](https://www.sciencedirect.com/topics/computer-science/adaptive-learning-rate)
 
 ## About me
 

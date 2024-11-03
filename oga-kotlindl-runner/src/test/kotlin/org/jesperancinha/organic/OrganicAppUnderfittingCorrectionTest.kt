@@ -18,6 +18,7 @@ class OrganicAppUnderfittingCorrectionTest {
 
         val model = Sequential.of(
             Input(1),
+            Dense(256, activation = Relu),
             Dense(128, activation = Relu),
             Dense(64, activation = Relu),
             Dense(32, activation = Relu),
@@ -26,12 +27,12 @@ class OrganicAppUnderfittingCorrectionTest {
         )
 
         model.compile(
-            optimizer = Adam(learningRate = 0.01f),
+            optimizer = Adam(learningRate = 0.0001f),
             loss = MSE,
             metric = Metrics.MAE
         )
 
-        model.fit(trainData, epochs = 2000, batchSize = 32)
+        model.fit(trainData, epochs = 6000, batchSize = 32)
 
         val evaluation = model.evaluate(testData)
         println("Test Loss: ${evaluation.lossValue}, Test MAE: ${evaluation.metrics[Metrics.MAE]}")
@@ -41,7 +42,6 @@ class OrganicAppUnderfittingCorrectionTest {
         val yTest = testData.y
 
         println("Predictions vs. True Values:")
-        predictions.forEach { println(it[0].toString()) }
         for (i in predictions.indices) {
             println("Real: ${yTest[i]}, Predicted: ${predictions[i].joinToString(",")}, From: ${xTest[i].joinToString(",")}")
         }
