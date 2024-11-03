@@ -2,10 +2,10 @@ package org.jesperancinha.organic
 
 import org.jesperancinha.organic.data.generateSyntheticData
 import org.jetbrains.kotlinx.dl.api.core.Sequential
-import org.jetbrains.kotlinx.dl.api.core.activation.Activations
+import org.jetbrains.kotlinx.dl.api.core.activation.Activations.*
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Dense
 import org.jetbrains.kotlinx.dl.api.core.layer.core.Input
-import org.jetbrains.kotlinx.dl.api.core.loss.Losses
+import org.jetbrains.kotlinx.dl.api.core.loss.Losses.*
 import org.jetbrains.kotlinx.dl.api.core.metric.Metrics
 import org.jetbrains.kotlinx.dl.api.core.optimizer.Adam
 import org.junit.jupiter.api.Test
@@ -18,16 +18,16 @@ class OrganicAppUnderfittingCorrectionTest {
 
         val model = Sequential.of(
             Input(1),
-            Dense(128, activation = Activations.Relu),
-            Dense(64, activation = Activations.Relu),
-            Dense(32, activation = Activations.Relu),
-            Dense(16, activation = Activations.Relu),
-            Dense(1, activation = Activations.Linear)
+            Dense(128, activation = Relu),
+            Dense(64, activation = Relu),
+            Dense(32, activation = Relu),
+            Dense(16, activation = Relu),
+            Dense(1, activation = Linear)
         )
 
         model.compile(
             optimizer = Adam(learningRate = 0.01f),
-            loss = Losses.MSE,
+            loss = MSE,
             metric = Metrics.MAE
         )
 
