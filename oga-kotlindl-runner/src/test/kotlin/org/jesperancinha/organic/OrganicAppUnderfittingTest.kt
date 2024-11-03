@@ -27,16 +27,16 @@ class OrganicAppUnderfittingTest {
         )
         model.fit(trainData, epochs = 100, batchSize = 32)
         val evaluation = model.evaluate(testData)
-        println("Test Loss: ${evaluation.lossValue}, Test MAE: ${evaluation.metrics[Metrics.MAE]}")
+        println("Test MSE Loss: ${evaluation.lossValue}, Test MAE metric: ${evaluation.metrics[Metrics.MAE]}")
 
         val xTest = testData.x
         val predictions = xTest.map { model.predictSoftly(it) }
         val yTest = testData.y
 
         println("Predictions vs. True Values:")
-        predictions.forEach { println(it[0].toString()) }
+//        predictions.forEach { println(it[0].toString()) }
         for (i in predictions.indices) {
-            println("True: ${yTest[i]}, Predicted: ${predictions[i][0]}")
+            println("Real: ${yTest[i]}, Predicted: ${predictions[i][0]}")
         }
     }
 }
