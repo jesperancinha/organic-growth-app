@@ -25,4 +25,4 @@ kotlin-deeplearning-tensorflow = { group = "org.jetbrains.kotlinx", name = "kotl
 nd4j-native = { group = "org.nd4j", name = "nd4j-native", version = "1.0.0-M2.1" }
 tensorflow-core-platform = { group = "org.tensorflow", name = "tensorflow-core-platform", version = "0.5.0" }
 langchain4j = { group = "dev.langchain4j", name = "langchain4j", version = "0.36.1" }
-langchain4j-open-ai = { group = "dev.langchain4j", name = "langchain4j-open-ai", version = "0.36.1" }
+langchain4j-open-ai = { group = "dev.langchain4j", name = "langchain4j-open-ai", version = "0.36.2" }
