@@ -1,7 +1,9 @@
 include Makefile.mk
 
-b: wrapper
+b: stop-daemons wrapper
 	./gradlew build
+stop-daemons:
+	gradle --stop
 wrapper:
 	gradle wrapper
 install-spring-boot-cli:
