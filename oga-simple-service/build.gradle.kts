@@ -16,7 +16,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter:1.0.0-M6")
+    implementation(libs.spring.ai.openai.spring.boot.starter)
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
