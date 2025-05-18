@@ -21,11 +21,16 @@ updates:
           - "*junit-jupiter*"
       log:
         patterns:
-           - "*slf4j*"
-           - "slf4j*"
-           - "*slf4j"
-           - "*log*"
+          - "*slf4j*"
+          - "slf4j*"
+          - "*slf4j"
+          - "*log*"
       kotlin-deeplearning:
         patterns:
-           - "*kotlin-deeplearning*"
-           - "kotlin-deeplearning*"
+          - "*kotlin-deeplearning*"
+          - "kotlin-deeplearning*"
+      langchain4j:
+        patterns:
+          - "langchain4j"
+          - "*langchain4j"
+          - "langchain4j*"
