@@ -24,3 +24,4 @@ nd4j-native = { group = "org.nd4j", name = "nd4j-native", version = "1.0.0-M2.1"
 tensorflow-core-platform = { group = "org.tensorflow", name = "tensorflow-core-platform", version = "1.0.0" }
 langchain4j = { group = "dev.langchain4j", name = "langchain4j", version = "0.36.2" }
 langchain4j-open-ai = { group = "dev.langchain4j", name = "langchain4j-open-ai", version = "0.36.2" }
+spring-ai-openai-spring-boot-starter = { group = "org.springframework.ai", name = "spring-ai-openai-spring-boot-starter", version = "1.0.0-M6" }
