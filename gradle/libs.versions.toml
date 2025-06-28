@@ -1,19 +1,19 @@
 [plugins]
-kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "2.1.21" }
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.21" }
-spring-boot = { id = "org.springframework.boot", version = "3.5.2" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "2.2.0" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.0" }
+spring-boot = { id = "org.springframework.boot", version = "3.5.3" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
 
 [libraries]
 kotest-assertions-core-jvm = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.10.2" }
 kotlinx-coroutines-reactor = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactor", version = "1.10.2" }
-junit-jupiter-bom = { group = "org.junit", name = "junit-bom", version = "5.13.1" }
+junit-jupiter-bom = { group = "org.junit", name = "junit-bom", version = "5.13.2" }
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version = "2.0.17" }
 slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version = "2.0.17" }
 spring-context = { group = "org.springframework", name = "spring-context", version = "6.2.8" }
 spring-web = { group = "org.springframework", name = "spring-web", version = "6.2.8" }
-spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version = "3.5.2" }
+spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version = "3.5.3" }
 jackson-module-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = "2.19.1" }
 kotlin-deeplearning-api = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-api", version = "0.5.2" }
 kotlin-deeplearning-impl = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-impl", version = "0.5.2" }
@@ -21,7 +21,7 @@ kotlin-deeplearning-onnx = { group = "org.jetbrains.kotlinx", name = "kotlin-dee
 kotlin-deeplearning-dataset = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-dataset", version = "0.5.2" }
 kotlin-deeplearning-tensorflow = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-tensorflow", version = "0.5.2" }
 nd4j-native = { group = "org.nd4j", name = "nd4j-native", version = "1.0.0-M2.1" }
-tensorflow-core-platform = { group = "org.tensorflow", name = "tensorflow-core-platform", version = "1.0.0" }
+tensorflow-core-platform = { group = "org.tensorflow", name = "tensorflow-core-platform", version = "1.1.0" }
 langchain4j = { group = "dev.langchain4j", name = "langchain4j", version = "0.36.2" }
 langchain4j-open-ai = { group = "dev.langchain4j", name = "langchain4j-open-ai", version = "1.0.0" }
 spring-ai-openai-spring-boot-starter = { group = "org.springframework.ai", name = "spring-ai-openai-spring-boot-starter", version = "1.0.0-M6" }
