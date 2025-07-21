@@ -14,7 +14,7 @@ slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version = "2.0.17" 
 spring-context = { group = "org.springframework", name = "spring-context", version = "6.2.9" }
 spring-web = { group = "org.springframework", name = "spring-web", version = "6.2.9" }
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version = "3.5.3" }
-jackson-module-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = "2.19.1" }
+jackson-module-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = "2.19.2" }
 kotlin-deeplearning-api = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-api", version = "0.5.2" }
 kotlin-deeplearning-impl = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-impl", version = "0.5.2" }
 kotlin-deeplearning-onnx = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-onnx", version = "0.5.2" }
