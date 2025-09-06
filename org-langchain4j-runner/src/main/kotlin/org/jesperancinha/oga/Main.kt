@@ -1,29 +1,28 @@
-import dev.langchain4j.data.message.UserMessage.userMessage
-import dev.langchain4j.internal.Utils.getOrDefault
-import dev.langchain4j.memory.ChatMemory
-import dev.langchain4j.memory.chat.TokenWindowChatMemory
-import dev.langchain4j.model.chat.ChatLanguageModel
+import dev.langchain4j.memory.chat.MessageWindowChatMemory
+import dev.langchain4j.model.chat.ChatModel
 import dev.langchain4j.model.openai.OpenAiChatModel
 import dev.langchain4j.model.openai.OpenAiChatModelName.GPT_4_O_MINI
-import dev.langchain4j.model.openai.OpenAiTokenizer
+import dev.langchain4j.service.AiServices
 
-val OPENAI_API_KEY: String = getOrDefault(System.getenv("OPENAI_API_KEY"), "demo")
+interface Assistant {
+    fun chat(message: String): String
+}
 
 fun main() {
-    val chatMemory: ChatMemory = TokenWindowChatMemory.withMaxTokens(300, OpenAiTokenizer())
+    val OPENAI_API_KEY = System.getenv("OPENAI_API_KEY") ?: "demo"
 
-    val model: ChatLanguageModel = OpenAiChatModel.builder()
+    val model: ChatModel = OpenAiChatModel.builder()
         .apiKey(OPENAI_API_KEY)
         .modelName(GPT_4_O_MINI)
         .build()
 
-    chatMemory.add(userMessage("Hello, my name is Joao"))
-    val answer = model.generate(chatMemory.messages()).content()
-    println(answer.text())
-    chatMemory.add(answer)
+    val memory = MessageWindowChatMemory.withMaxMessages(50)
+    val assistant = AiServices.builder(Assistant::class.java)
+        .chatModel(model)
+        .chatMemory(memory)
+        .build()
 
-    chatMemory.add(userMessage("What is my name?"))
-    val answerWithName = model.generate(chatMemory.messages()).content()
-    println(answerWithName.text())
-    chatMemory.add(answerWithName)
+    println(assistant.chat("Hello, my name is Joao"))
+    println(assistant.chat("What is my name?"))
 }
+

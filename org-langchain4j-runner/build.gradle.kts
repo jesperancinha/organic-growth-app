@@ -16,8 +16,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.junit.platform:junit-platform-engine")
     testImplementation("org.junit.platform:junit-platform-launcher")
-    implementation(libs.langchain4j.open.ai)
-    implementation(libs.langchain4j)
+    implementation("dev.langchain4j:langchain4j-open-ai")
+    implementation("dev.langchain4j:langchain4j")
+    implementation(platform(libs.langchain4j.bom))
 }
 
 tasks.test {
