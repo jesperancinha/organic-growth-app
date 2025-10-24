@@ -1,7 +1,7 @@
 [plugins]
 kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "2.2.20" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.20" }
-spring-boot = { id = "org.springframework.boot", version = "3.5.6" }
+spring-boot = { id = "org.springframework.boot", version = "3.5.7" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
 
 [libraries]
@@ -13,7 +13,7 @@ slf4j-api = { group = "org.slf4j", name = "slf4j-api", version = "2.0.17" }
 slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version = "2.0.17" }
 spring-context = { group = "org.springframework", name = "spring-context", version = "6.2.12" }
 spring-web = { group = "org.springframework", name = "spring-web", version = "6.2.12" }
-spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version = "3.5.6" }
+spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version = "3.5.7" }
 jackson-module-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = "2.20.0" }
 kotlin-deeplearning-api = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-api", version = "0.5.2" }
 kotlin-deeplearning-impl = { group = "org.jetbrains.kotlinx", name = "kotlin-deeplearning-impl", version = "0.5.2" }
